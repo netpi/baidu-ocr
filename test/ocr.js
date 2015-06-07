@@ -5,8 +5,8 @@
  * 
  * MIT License
  */
-require('should');
-var apikey = process.env.BAIDU_APIKEY
+var should = require('should');
+var apikey = process.env.BAIDU_APIKEY;
 
 if ( !apikey ) {
   console.log( 'Can not find  environment variable `BAIDU_APIKEY`, please run test like this:' );
@@ -15,8 +15,9 @@ if ( !apikey ) {
 }
 
 var ocr = require('../.').create( apikey ),
-
-  imagePath = __dirname + '/001.jpg';
+  imagePath = __dirname + '/001.jpg',
+  wrongTypeImagePath = __dirname + '/wrongType.png',
+  wrongSizeImagePath = __dirname + '/wrongSize.jpg';
 
 before( function( done ) {
   done();
@@ -59,6 +60,28 @@ describe( '#OCR', function() {
       ocr.scan( 'Recognize', 'CHN_ENG', 2, imagePath, function( err, data ) {
         data.should.have.property( 'errNum', '0' );
         data.retData.length.should.above(0);
+        done();
+      });
+    });
+  });
+  
+  describe( 'Wrong type image LocateRecognize', function() {
+    this.timeout(15000);
+    it( 'should return `errNum` with -1', function( done ) {
+      ocr.scan( 'Recognize', 'CHN_ENG', 2, wrongTypeImagePath, function( err, data ) {
+        err.should.have.property( 'errNum', -1 );
+        should(data).be.exactly( null );
+        done();
+      });
+    });
+  });
+  
+  describe( 'Wrong size image LocateRecognize', function() {
+    this.timeout(15000);
+    it( 'should return `errNum` with -1', function( done ) {
+      ocr.scan( 'Recognize', 'CHN_ENG', 2, wrongSizeImagePath, function( err, data ) {
+        err.should.have.property( 'errNum', -1 );
+        should(data).be.exactly( null );
         done();
       });
     });

@@ -6,7 +6,7 @@
  * MIT License
  */
 var ocr = require('baidu-ocr').create( 'your api key' ),
-  image = __dirname + '/love-letter.jpg';
+  image = __dirname + '/001.jpg';
 
 // detectType: LocateRecognize: 整图文字检测、识别,以行为单位（默认）
 // languageType: CHN_ENG(中英)（默认）
