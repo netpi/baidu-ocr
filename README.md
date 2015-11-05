@@ -18,12 +18,12 @@ How to use
 ===========
 
     var ocr = require('baidu-ocr').create( 'your api key' ),
-      image = __dirname + '/love-letter.jpg';
+      image = fs.createReadStream( __dirname + '/love-letter.jpg' );
 
     // detectType: `LocateRecognize`代表整图文字检测、识别,以行为单位（默认）  
     // languageType: `CHN_ENG`(中英)（默认）  
     // imageType: `2`代表图片原文件（只支持JPG，大小不能超过300K）
-    // image: 图片路径  
+    // image: 图片流对象 或 base64 编码的字符串  
     ocr.scan( 'LocateRecognize', 'CHN_ENG', 2, image, function( err, data ) {
       if ( err ) {
         return console.error( err );
