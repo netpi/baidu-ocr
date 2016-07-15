@@ -1,3 +1,5 @@
+> 该项目以不维护, 继续使用百度OCR服务 请参考  https://github.com/netpi/baidu-ocr-api 
+
 
 Baidu-ocr
 ===========
