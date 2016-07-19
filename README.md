@@ -1,4 +1,4 @@
-> 该项目以不维护, 继续使用百度OCR服务 请参考  https://github.com/netpi/baidu-ocr-api 
+> 该项目已经不再维护, 继续使用[百度OCR服务](https://bce.baidu.com/doc/OCR/ProductDescription.html) 请参考  https://github.com/netpi/baidu-ocr-api 
 
 
 Baidu-ocr
